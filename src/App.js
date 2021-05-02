@@ -1,22 +1,21 @@
-import './App.css';
-import Home from './pages/Home'
-import styled from 'styled-components'
+import "./App.css";
+import Home from "./pages/views/Home";
+import styled from "styled-components";
+import { Provider } from "react-redux";
+import store from "./store/index";
 
 const Container = styled.div`
   width: 100vw;
-  height: 100vh
-`
-
-// import {
-//   Switch,
-//   Route
-// } from 'react-router-dom'
+  height: 100vh;
+`;
 
 function App() {
   return (
-    <Container>
-      <Home></Home>
-    </Container>
+    <Provider store={store}>
+      <Container>
+        <Home></Home>
+      </Container>
+    </Provider>
   );
 }
 
