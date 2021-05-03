@@ -3,6 +3,8 @@ import "../style/ChineseTrans.css";
 
 export default class ChineseTrans extends React.Component {
   render() {
-    return <div>ChineseTrans</div>;
+    return (
+      <div>chineseTrans</div>
+    )
   }
 }

@@ -1,11 +1,9 @@
 import React from "react";
+import { Switch, Route, withRouter } from "react-router-dom";
 import "../style/Home.css";
-import ChineseTrans from '../../components/views/ChineseTrans';
-import ImageBed from '../../components/views/ImageBed';
-import ExportPDF from '../../components/views/ExportPDF';
-
-import { connect } from 'react-redux';
-import { setChineseTrans } from '../../store/actions';
+import ChineseTrans from "../../components/views/ChineseTrans";
+import ExportPDF from "../../components/views/ExportPDF";
+import ImageBed from "../../components/views/ImageBed";
 
 import { Layout, Menu } from "antd";
 import {
@@ -13,14 +11,14 @@ import {
   MenuFoldOutlined,
   InteractionOutlined,
   AreaChartOutlined,
-  FilePdfOutlined
+  FilePdfOutlined,
+  RedditOutlined
 } from "@ant-design/icons";
 const { Header, Sider, Content } = Layout;
 
 class Home extends React.Component {
   state = {
     collapsed: false,
-    showChineseTrans: false,
   };
 
   toggle = () => {
@@ -30,30 +28,46 @@ class Home extends React.Component {
   };
 
   switchModule = (item) => {
-    
-  }
+    const key = item.key;
+    console.log(key);
+    switch (key) {
+      case "2":
+        this.props.history.push("/chineseTrans");
+        break;
+      case "3":
+        this.props.history.push("/imageBed");
+        break;
+      case "4":
+        this.props.history.push("/exportPDF");
+        break;
+      default:
+        console.log("No module found!");
+    }
+  };
 
   componentDidMount() {
-    // const chineseTrans = this.props
-    // this.state.showChineseTrans = chineseTrans.chineseTrans
-    // console.log('chineseTrans', chineseTrans)
-    // console.log('showChineseTrans', this.state.showChineseTrans)
+    this.props.history.push("/");
   }
 
   render() {
-    // const chineseTrans = this.props
     return (
       <Layout>
         <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
           <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]} onClick={this.switchModule}>
-            <Menu.Item key="1" icon={<InteractionOutlined />}>
+          <Menu
+            theme="dark"
+            mode="inline"
+            defaultSelectedKeys={["1"]}
+            onClick={this.switchModule}
+          >
+            <Menu.Item key="1" icon={<RedditOutlined />} />
+            <Menu.Item key="2" icon={<InteractionOutlined />}>
               簡繁轉換
             </Menu.Item>
-            <Menu.Item key="2" icon={<AreaChartOutlined />}>
+            <Menu.Item key="3" icon={<AreaChartOutlined />}>
               圖床
             </Menu.Item>
-            <Menu.Item key="3" icon={<FilePdfOutlined />}>
+            <Menu.Item key="4" icon={<FilePdfOutlined />}>
               導出 PDF
             </Menu.Item>
           </Menu>
@@ -76,9 +90,12 @@ class Home extends React.Component {
               padding: 20,
             }}
           >
-            <ChineseTrans></ChineseTrans>
-            <ImageBed></ImageBed>
-            <ExportPDF></ExportPDF>
+            <Switch>
+              <Route exact path="/"></Route>
+              <Route path="/chineseTrans" component={ChineseTrans}></Route>
+              <Route path="/exportPDF" component={ExportPDF}></Route>
+              <Route path="/imageBed" component={ImageBed}></Route>
+            </Switch>
           </Content>
         </Layout>
       </Layout>
@@ -86,18 +103,4 @@ class Home extends React.Component {
   }
 }
 
-const mapStatetoProps = (state) => {
-  return {
-    chineseTrans: state.chineseTrans,
-  }
-}
-
-const mapDispatchtoProps = (dispatch, ownProps) => {
-  return {
-    setChineseTrans(data) {
-      dispatch(setChineseTrans(data))
-    },
-  }
-}
-
-export default connect(mapStatetoProps, mapDispatchtoProps)(Home)
+export default withRouter(Home);
