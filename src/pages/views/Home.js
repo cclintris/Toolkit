@@ -4,6 +4,7 @@ import "../style/Home.css";
 import ChineseTrans from "../../components/views/ChineseTrans";
 import ExportPDF from "../../components/views/ExportPDF";
 import ImageBed from "../../components/views/ImageBed";
+import ReduxExample from "../../components/views/ReduxExample";
 
 import { Layout, Menu } from "antd";
 import {
@@ -12,7 +13,8 @@ import {
   InteractionOutlined,
   AreaChartOutlined,
   FilePdfOutlined,
-  RedditOutlined
+  RedditOutlined,
+  FieldNumberOutlined,
 } from "@ant-design/icons";
 const { Header, Sider, Content } = Layout;
 
@@ -39,6 +41,9 @@ class Home extends React.Component {
         break;
       case "4":
         this.props.history.push("/exportPDF");
+        break;
+      case "5":
+        this.props.history.push("/reduxExample");
         break;
       default:
         console.log("No module found!");
@@ -70,6 +75,9 @@ class Home extends React.Component {
             <Menu.Item key="4" icon={<FilePdfOutlined />}>
               導出 PDF
             </Menu.Item>
+            <Menu.Item key="5" icon={<FieldNumberOutlined />}>
+              Redux 範例 counter
+            </Menu.Item>
           </Menu>
         </Sider>
         <Layout className="site-layout">
@@ -95,6 +103,7 @@ class Home extends React.Component {
               <Route path="/chineseTrans" component={ChineseTrans}></Route>
               <Route path="/exportPDF" component={ExportPDF}></Route>
               <Route path="/imageBed" component={ImageBed}></Route>
+              <Route path="/reduxExample" component={ReduxExample}></Route>
             </Switch>
           </Content>
         </Layout>
