@@ -31,7 +31,6 @@ class Home extends React.Component {
 
   switchModule = (item) => {
     const key = item.key;
-    console.log(key);
     switch (key) {
       case "2":
         this.props.history.push("/chineseTrans");
