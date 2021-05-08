@@ -2,12 +2,12 @@ import React from "react";
 import BSMax from "../../assets/BSMax.png";
 import BSbibi from '../../assets/BSbibi.jpeg';
 
-export default class MouseTracker extends React.Component {
+export default class BS extends React.Component {
   render() {
     const mouse = this.props.mouse;
     return (
       <img
-        src={BSbibi}
+        src={BSMax}
         alt=""
         style={{
           position: "absolute",
