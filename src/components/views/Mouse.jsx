@@ -1,7 +1,7 @@
 import React from "react";
 import "../style/MouseTracker.css";
 
-export default class MouseTracker extends React.Component {
+export default class Mouse extends React.Component {
   constructor(props) {
     super(props);
     this.handleMouseMove = this.handleMouseMove.bind(this);
