@@ -5,6 +5,7 @@ import ChineseTrans from "../../components/views/ChineseTrans";
 import ExportPDF from "../../components/views/ExportPDF";
 import ImageBed from "../../components/views/ImageBed";
 import ReduxExample from "../../components/views/ReduxExample";
+import RenderProps from "../../components/views/RenderProps";
 
 import { Layout, Menu } from "antd";
 import {
@@ -15,13 +16,17 @@ import {
   FilePdfOutlined,
   RedditOutlined,
   FieldNumberOutlined,
+  TrademarkOutlined,
 } from "@ant-design/icons";
 const { Header, Sider, Content } = Layout;
 
 class Home extends React.Component {
-  state = {
-    collapsed: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      collapsed: false,
+    };
+  }
 
   toggle = () => {
     this.setState({
@@ -43,6 +48,9 @@ class Home extends React.Component {
         break;
       case "5":
         this.props.history.push("/reduxExample");
+        break;
+      case "6":
+        this.props.history.push("/renderProps");
         break;
       default:
         console.log("No module found!");
@@ -77,6 +85,9 @@ class Home extends React.Component {
             <Menu.Item key="5" icon={<FieldNumberOutlined />}>
               Redux 範例 counter
             </Menu.Item>
+            <Menu.Item key="6" icon={<TrademarkOutlined />}>
+              Render Props
+            </Menu.Item>
           </Menu>
         </Sider>
         <Layout className="site-layout">
@@ -103,6 +114,7 @@ class Home extends React.Component {
               <Route path="/exportPDF" component={ExportPDF}></Route>
               <Route path="/imageBed" component={ImageBed}></Route>
               <Route path="/reduxExample" component={ReduxExample}></Route>
+              <Route path="/renderProps" component={RenderProps}></Route>
             </Switch>
           </Content>
         </Layout>

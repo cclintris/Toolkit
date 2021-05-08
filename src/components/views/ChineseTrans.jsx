@@ -5,12 +5,14 @@ import { Input } from "antd";
 const { TextArea } = Input;
 
 export default class ChineseTrans extends React.Component {
-  state = {
-    value: "",
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: "",
+    };
+  }
 
   onChange = ({ target: { value } }) => {
-    console.log('value', value)
     this.setState({value})
   };
 

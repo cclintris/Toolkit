@@ -1,9 +1,17 @@
-const counterReducer = (state = 0, action) => {
+const defaultState = {
+    count: 0
+}
+
+const counterReducer = (state = defaultState, action) => {
     switch(action.type) {
         case 'INCREMENT':
-            return state + 1
+            return Object.assign({}, state, {
+                count: state.count + 1
+            })
         case 'DECREMENT':
-            return state - 1
+            return Object.assign({}, state, {
+                count: state.count - 1
+            })
         default:
             return state
     }
