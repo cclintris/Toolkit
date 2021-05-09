@@ -6,6 +6,7 @@ import ExportPDF from "../../components/views/ExportPDF";
 import ImageBed from "../../components/views/ImageBed";
 import ReduxExample from "../../components/views/ReduxExample";
 import RenderProps from "../../components/views/RenderProps";
+import Posts from "../../components/views/Posts";
 
 import { Layout, Menu } from "antd";
 import {
@@ -17,6 +18,7 @@ import {
   RedditOutlined,
   FieldNumberOutlined,
   TrademarkOutlined,
+  TableOutlined,
 } from "@ant-design/icons";
 const { Header, Sider, Content } = Layout;
 
@@ -52,6 +54,9 @@ class Home extends React.Component {
       case "6":
         this.props.history.push("/renderProps");
         break;
+      case "7":
+        this.props.history.push("/posts");
+        break;
       default:
         console.log("No module found!");
     }
@@ -63,7 +68,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <Layout>
+      <Layout style={{height: '100vh'}}>
         <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
           <div className="logo" />
           <Menu
@@ -88,6 +93,9 @@ class Home extends React.Component {
             <Menu.Item key="6" icon={<TrademarkOutlined />}>
               Render Props
             </Menu.Item>
+            <Menu.Item key="7" icon={<TableOutlined />}>
+              Posts
+            </Menu.Item>
           </Menu>
         </Sider>
         <Layout className="site-layout">
@@ -106,6 +114,7 @@ class Home extends React.Component {
             style={{
               margin: "24px 16px",
               padding: 20,
+              height: '100vh',
             }}
           >
             <Switch>
@@ -115,6 +124,7 @@ class Home extends React.Component {
               <Route path="/imageBed" component={ImageBed}></Route>
               <Route path="/reduxExample" component={ReduxExample}></Route>
               <Route path="/renderProps" component={RenderProps}></Route>
+              <Route path="/posts" component={Posts}></Route>
             </Switch>
           </Content>
         </Layout>

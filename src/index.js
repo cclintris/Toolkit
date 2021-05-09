@@ -8,14 +8,22 @@ import 'antd/dist/antd.css';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import allReducers from "./store/reducers/index";
+import {logger} from 'redux-logger';
+import thunk from 'redux-thunk';
+
+const capAtTen = store => next => action => {
+  const count = store.getState().counter.count
+  if(count >= 10) {
+    return next({type: 'DECREMENT'})
+  }
+  return next(action)
+}
+
 const store = createStore(
   allReducers,
+  applyMiddleware(thunk, logger),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
-
-const logger = store => next => action => {
-  
-}
 
 ReactDOM.render(
   <Provider store={store}>

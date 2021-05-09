@@ -1,5 +1,5 @@
 import React from "react";
-import BSMax from "../../assets/BSMax.png";
+// import BSMax from "../../assets/BSMax.png";
 import BSbibi from '../../assets/BSbibi.jpeg';
 
 export default class BS extends React.Component {
@@ -7,7 +7,7 @@ export default class BS extends React.Component {
     const mouse = this.props.mouse;
     return (
       <img
-        src={BSMax}
+        src={BSbibi}
         alt=""
         style={{
           position: "absolute",
