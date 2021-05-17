@@ -1,31 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import "../style/ChineseTrans.css";
-import { Input } from "antd";
+import { Input, Button } from "antd";
+import { traditionalized, simplized } from "../../utils/chineseTrans";
 
 const { TextArea } = Input;
 
-export default class ChineseTrans extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      value: "",
-    };
-  }
+const ChineseTrans = () => {
+  const [input, setInput] = useState("");
 
-  onChange = ({ target: { value } }) => {
-    this.setState({value})
+  const onChange = (e) => {
+    setInput(e.target.value);
   };
 
-  render() {
-    const { value } = this.state;
-
-    return (
+  return (
+    <div>
       <TextArea
-        value={value}
-        onChange={this.onChange}
+        value={input}
+        onChange={onChange}
         placeholder="輸入文字"
-        autoSize={{ minRows: 3, maxRows: 5 }}
+        style={{ marginBottom: "30px", overflow: "scroll", height: "55vh" }}
       />
-    );
-  }
-}
+      <div className="CT-btn">
+        <Button
+          type="primary"
+          style={{ marginRight: "20px" }}
+          onClick={() => {
+            setInput(traditionalized(input));
+          }}
+        >
+          簡轉繁
+        </Button>
+        <Button
+          type="primary"
+          style={{ marginRight: "20px" }}
+          onClick={() => {
+            setInput(simplized(input));
+          }}
+        >
+          繁轉簡
+        </Button>
+        <Button type="dashed">複製的剪貼板</Button>
+      </div>
+    </div>
+  );
+};
+
+export default ChineseTrans;
