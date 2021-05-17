@@ -1,5 +1,5 @@
 const defaultState = {
-    count: 0
+    count: 8
 }
 
 const counterReducer = (state = defaultState, action) => {

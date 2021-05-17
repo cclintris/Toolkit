@@ -21,7 +21,7 @@ const capAtTen = store => next => action => {
 
 const store = createStore(
   allReducers,
-  applyMiddleware(thunk, logger),
+  applyMiddleware(thunk, logger, capAtTen),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

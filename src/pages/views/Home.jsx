@@ -4,9 +4,6 @@ import "../style/Home.css";
 import ChineseTrans from "../../components/views/ChineseTrans";
 import ExportPDF from "../../components/views/ExportPDF";
 import ImageBed from "../../components/views/ImageBed";
-import ReduxExample from "../../components/views/ReduxExample";
-import RenderProps from "../../components/views/RenderProps";
-import Posts from "../../components/views/Posts";
 
 import { Layout, Menu } from "antd";
 import {
@@ -16,9 +13,6 @@ import {
   AreaChartOutlined,
   FilePdfOutlined,
   RedditOutlined,
-  FieldNumberOutlined,
-  TrademarkOutlined,
-  TableOutlined,
 } from "@ant-design/icons";
 const { Header, Sider, Content } = Layout;
 
@@ -47,15 +41,6 @@ class Home extends React.Component {
         break;
       case "4":
         this.props.history.push("/exportPDF");
-        break;
-      case "5":
-        this.props.history.push("/reduxExample");
-        break;
-      case "6":
-        this.props.history.push("/renderProps");
-        break;
-      case "7":
-        this.props.history.push("/posts");
         break;
       default:
         console.log("No module found!");
@@ -87,15 +72,6 @@ class Home extends React.Component {
             <Menu.Item key="4" icon={<FilePdfOutlined />}>
               導出 PDF
             </Menu.Item>
-            <Menu.Item key="5" icon={<FieldNumberOutlined />}>
-              Redux 範例 counter
-            </Menu.Item>
-            <Menu.Item key="6" icon={<TrademarkOutlined />}>
-              Render Props
-            </Menu.Item>
-            <Menu.Item key="7" icon={<TableOutlined />}>
-              Posts
-            </Menu.Item>
           </Menu>
         </Sider>
         <Layout className="site-layout">
@@ -122,9 +98,6 @@ class Home extends React.Component {
               <Route path="/chineseTrans" component={ChineseTrans}></Route>
               <Route path="/exportPDF" component={ExportPDF}></Route>
               <Route path="/imageBed" component={ImageBed}></Route>
-              <Route path="/reduxExample" component={ReduxExample}></Route>
-              <Route path="/renderProps" component={RenderProps}></Route>
-              <Route path="/posts" component={Posts}></Route>
             </Switch>
           </Content>
         </Layout>
