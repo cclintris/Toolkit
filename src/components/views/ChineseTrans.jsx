@@ -25,6 +25,7 @@ const ChineseTrans = () => {
       try {
         message.success("複製成功！");
       } catch (e) {
+        console.log(e)
         message.error("錯誤發生！");
       }
     }
