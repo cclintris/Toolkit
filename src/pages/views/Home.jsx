@@ -53,7 +53,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <Layout style={{height: '100vh'}}>
+      <Layout style={{ height: "100vh" }}>
         <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
           <div className="logo" />
           <Menu
@@ -90,7 +90,10 @@ class Home extends React.Component {
             style={{
               margin: "24px 16px",
               padding: 20,
-              height: '100vh',
+              height: "100vh",
+              position: "relative",
+              backgroundColor: "#fdfcf8",
+              overflow: "scroll"
             }}
           >
             <Switch>
