@@ -29,7 +29,7 @@ const Uploader = () => {
         method: "POST",
         body: JSON.stringify({ data: base64EncodedImage }),
         headers: { "Content-Type": "application/json" },
-      });
+      }).then((res) => console.log(res));
     } catch (err) {
       console.error(err);
     }
@@ -68,7 +68,11 @@ const Uploader = () => {
         </Image.PreviewGroup>
       </div>
       <div className="central">
-        <Button style={{ marginRight: "10px" }} type="dashed">
+        <Button
+          style={{ marginRight: "10px" }}
+          type="dashed"
+          onClick={handleSubmitFile}
+        >
           Upload
         </Button>
         <Button onClick={() => setPreviewSource("")} type="dashed" danger>
